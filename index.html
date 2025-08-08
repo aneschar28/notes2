@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>notes</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="titulo">
+    <h1>Chava-notes</h1>
+  </div>
+
+  <div class="contenedor">
+    <form id="logForm">
+      <label>
+        Contact Via:<br />
+        <input type="text" name="contactVia" />
+      </label>
+
+      <label>
+        Name:<br />
+        <input type="text" name="name" />
+      </label>
+
+      <label>
+        Order:<br />
+        <input type="text" name="order" />
+      </label>
+
+      <label>
+        Inquiry:<br />
+        <input type="text" name="inquiry" />
+      </label>
+
+      <label>
+        Action Taken:<br />
+        <input type="text" name="actionTaken" />
+      </label>
+
+      <label>
+        Customer Experience (CEX):<br />
+        <select name="cex">
+          <option value="">-- Select --</option>
+          <option value="Positive">Positive</option>
+          <option value="Neutral">Neutral</option>
+          <option value="Negative">Negative</option>
+        </select>
+      </label>
+
+      <label>
+        Reason (Why):<br />
+        <select name="reason">
+          <option value="">-- Select --</option>
+
+          <optgroup label="Positive Reason">
+            <option>Customer satisfied with the solution provided.</option>
+            <option>Appreciated the attention.</option>
+            <option>Seemed pleased with the information received.</option>
+            <option>Customer expressed gratitude for the follow-up.</option>
+            <option>Understood the process.</option>
+            <option>Very polite customer.</option>
+          </optgroup>
+
+          <optgroup label="Neutral Reason">
+            <option>Customer understood the situation.</option>
+            <option>Did not express frustration.</option>
+            <option>Showed a neutral attitude.</option>
+          </optgroup>
+
+          <optgroup label="Negative Reason">
+            <option>Customer frustrated.</option>
+            <option>Not satisfied.</option>
+            <option>Dissatisfied with the product received.</option>
+            <option></option>
+          </optgroup>
+        </select>
+      </label>
+
+      <div class="contenedor2">
+        <button type="submit">Generate note</button>
+        <button id = "clean">clean</button>
+      </div>
+
+    </form>
+
+    <div class="contenedor2">
+        <textarea id="output" rows="6" cols="100" readonly></textarea>
+        <button id = "copy">copy</button>
+    </div>
+
+    
+  </div>
+
+  <script src="notas.js"></script>
+</body>
+</html>
