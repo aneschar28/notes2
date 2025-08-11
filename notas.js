@@ -14,7 +14,88 @@ function limpiar(name) {
     
 }
 
+const estadosUSA = [
+  ["alabama", "Al"],
+  ["alaska", "Ak"],
+  ["arizona", "Az"],
+  ["arkansas", "Ar"],
+  ["california", "Ca"],
+  ["colorado", "Co"],
+  ["connecticut", "Ct"],
+  ["delaware", "De"],
+  ["florida", "Fl"],
+  ["georgia", "Ga"],
+  ["hawai", "Hi"],
+  ["idaho", "Id"],
+  ["illinois", "Il"],
+  ["indiana", "In"],
+  ["iowa", "Ia"],
+  ["kansas", "Ks"],
+  ["kentucky", "Ky"],
+  ["luisiana", "La"],
+  ["maine", "Me"],
+  ["maryland", "Md"],
+  ["massachusetts", "Ma"],
+  ["michigan", "Mi"],
+  ["minnesota", "Mn"],
+  ["misisipi", "Ms"],
+  ["misuri", "Mo"],
+  ["montana", "Mt"],
+  ["nebraska", "Ne"],
+  ["nevada", "Nv"],
+  ["nueva hampshire", "Nh"],
+  ["nueva jersey", "Nj"],
+  ["nuevo mexico", "Nm"],
+  ["nueva york", "Ny"],
+  ["carolina del norte", "Nc"],
+  ["dakota del norte", "Nd"],
+  ["ohio", "Oh"],
+  ["oklahoma", "Ok"],
+  ["oregon", "Or"],
+  ["pensilvania", "Pa"],
+  ["rhode island", "Ri"],
+  ["carolina del sur", "Sc"],
+  ["dakota del sur", "Sd"],
+  ["tennessee", "Tn"],
+  ["texas", "Tx"],
+  ["utah", "Ut"],
+  ["vermont", "Vt"],
+  ["virginia", "Va"],
+  ["washington", "Wa"],
+  ["virginia occidental", "Wv"],
+  ["wisconsin", "Wi"],
+  ["wyoming", "Wy"],
+  ["puerto rico", "Pr"]
+];
 
+
+function encEstado(estado){
+
+    for(array of estadosUSA){
+
+        if (array[1]===estado){
+            return array[0];
+        }
+
+    }
+
+    return "no data"
+
+}
+
+function encIniciales(abreviacion){
+
+    for(array of estadosUSA){
+
+        if (array[0]===abreviacion){
+            return array[1];
+        }
+
+    }
+
+    return "no data"
+
+}
 
 document.getElementById("logForm").addEventListener("submit", function (e) {
   e.preventDefault();
@@ -40,3 +121,13 @@ document.getElementById("copy").addEventListener("click", function () {
     navigator.clipboard.writeText(texto).catch(err => console.error("Error al copiar: ", err));
   
 });
+
+document.getElementById("serch").addEventListener("click", function () {
+  
+    document.getElementById("respuesta").innerText = encEstado(standardizeName(document.getElementById("abrev").value));
+
+});
+
+
+
+
