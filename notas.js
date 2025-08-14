@@ -93,7 +93,7 @@ document.getElementById("logForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
   const formData = new FormData(this);
-  const log = `CONTACT VIA: ${limpiar(formData.get("contactVia"))} //// NAME: ${standardizeName(formData.get("name"))} //// ORDER: ${limpiar(formData.get("order"))} //// INQUIRY: ${limpiar(formData.get("inquiry"))} //// ACTION TAKEN: ${limpiar(formData.get("actionTaken"))} //// CEX: ${limpiar(formData.get("cex"))} //// WHY: ${limpiar(formData.get("reason"))}`;
+  const log = `CONTACT VIA: ${limpiar(formData.get("contactVia"))} //// NAME: ${standardizeName(formData.get("name"))} //// ORDER: ${limpiar(formData.get("order"))} //// INQUIRY: ${limpiar(formData.get("inquiry"))} //// ACTION TAKEN: ${limpiar(formData.get("actionTaken"))} //// CEX: ${limpiar(formData.get("cex"))} //// WHY: ${limpiar(formData.get("reason")+" "+formData.get("other"))}`;
 
   document.getElementById("output").textContent = log;
 });
@@ -119,6 +119,10 @@ document.getElementById("serch").addEventListener("click", function () {
     document.getElementById("respuesta").innerText = encEstado(standardizeName(document.getElementById("abrev").value));
 
 });
+
+
+
+
 
 
 
