@@ -89,7 +89,7 @@ function encEstado(estado){
 }
 
 
-document.getElementById("logForm").addEventListener("submit", function (e) {
+document.getElementById("logForm").addEventListener("input", function (e) {
   e.preventDefault();
 
   const formData = new FormData(this);
@@ -119,14 +119,5 @@ document.getElementById("serch").addEventListener("click", function () {
     document.getElementById("respuesta").innerText = encEstado(standardizeName(document.getElementById("abrev").value));
 
 });
-
-
-
-
-
-
-
-
-
 
 
