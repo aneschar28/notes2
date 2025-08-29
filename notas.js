@@ -1,16 +1,18 @@
 
 function standardizeName(name) {
   return name
-    .trim()
-    .toLowerCase()
-    .split(/\s+/)
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
+  .trim()
+  .toLowerCase()
+  .split(/\s+/)
+  .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+  .join(' ');
 }
 
 function limpiar(name) {
   return name
-    .trim()
+  .trim()
+  .split(/\s+/)
+  .join(' ');
     
 }
 
@@ -93,7 +95,7 @@ document.getElementById("logForm").addEventListener("input", function (e) {
   e.preventDefault();
 
   const formData = new FormData(this);
-  const log = `CONTACT VIA: ${limpiar(formData.get("contactVia"))} //// NAME: ${standardizeName(formData.get("name"))} //// ORDER: ${limpiar(formData.get("order"))} //// INQUIRY: ${limpiar(formData.get("inquiry"))} //// ACTION TAKEN: ${limpiar(formData.get("actionTaken"))} //// CEX: ${limpiar(formData.get("cex"))} //// WHY: ${limpiar(formData.get("reason")+" "+formData.get("other"))}`;
+  const log = `CONTACT VIA: ${limpiar(formData.get("via") + " " +"#" + " " + formData.get("number"))} //// NAME: ${standardizeName(formData.get("name"))} //// ORDER: ${limpiar(formData.get("order"))} //// INQUIRY: ${limpiar(formData.get("inquiry"))} //// ACTION TAKEN: ${limpiar(formData.get("actionTaken"))} //// CEX: ${limpiar(formData.get("cex"))} //// WHY: ${limpiar(formData.get("reason")+" "+formData.get("other"))}`;
 
   document.getElementById("output").textContent = log;
 });
