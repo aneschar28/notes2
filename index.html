@@ -9,15 +9,27 @@
 <body>
 
   <div class="titulo">
-    <h1>Chava-notes</h1>
+    <h1>Chava-Notes</h1>
   </div>
 
   <div class="contenedor">
     <form id="logForm">
+      
       <label>
         Contact Via:<br />
-        <input type="text" name="contactVia" />
+        <select name="via">
+          <option value="">-- Select --</option>
+          <option value="Phone">Phone</option>
+          <option value="Ticket">Ticket</option>
+        </select>
       </label>
+
+      
+      <label>
+        Number<br />
+        <input type="text" name="number" />
+      </label>
+
 
       <label>
         Name:<br />
@@ -46,6 +58,7 @@
           <option value="Positive">Positive</option>
           <option value="Neutral">Neutral</option>
           <option value="Negative">Negative</option>
+          <option value="Not getting any response">Not getting any response</option>
         </select>
       </label>
 
@@ -73,7 +86,7 @@
             <option>Customer frustrated.</option>
             <option>Not satisfied.</option>
             <option>Dissatisfied with the product received.</option>
-            <option></option>
+            <option>N/A</option>
           </optgroup>
         </select>
       </label>
