@@ -15,7 +15,7 @@
   <div class="contenedor">
     <form id="logForm">
       
-      <label>
+      <label id="via">
         Contact Via:<br />
         <select name="via">
           <option value="">-- Select --</option>
@@ -24,12 +24,10 @@
         </select>
       </label>
 
-      
-      <label>
+      <label id="number">
         Number<br />
         <input type="text" name="number" />
       </label>
-
 
       <label>
         Name:<br />
@@ -102,26 +100,25 @@
 
     </form>
 
-   
-
     <div>
-        <div class="contenedor2">
+      <div class="contenedor2">
         <textarea id="output" rows="6" cols="100" readonly></textarea>
-        <button id = "copy">copy</button>
+        <div id="botones" class="botones">
+          <button id = "copy">copy</button>
         </div>
+      </div>
 
-        <div class="contenedor3">
-          <label>
-            state:<br />
-            <input type="text" id="abrev" />
-          </label> 
-         <div class="contenedor4">
-            <button id = "serch">search</button>
-            <h3 id="respuesta"></h3>
-         </div>
+      <div class="contenedor3">
+        <label>
+          state:<br />
+          <input type="text" id="abrev" />
+        </label> 
+        <div class="contenedor4">
+          <button id = "serch">search</button>
+          <h3 id="respuesta"></h3>
         </div>
+      </div>
     </div>
-
     
   </div>
 
