@@ -80,7 +80,6 @@ let cex;
 let reason;
 let other;
 
-
 function encEstado(estado) {
   for (array of estadosUSA) {
     if (array[1] === estado) {
@@ -139,7 +138,7 @@ document.getElementById("logForm").addEventListener("input", function (e) {
         if (fieldElement) {
           if (fieldElement.className.includes("missing")) {
             fieldElement.classList.remove("missing");
-          } 
+          }
         } else {
           console.warn(`No se encontró el campo con name="${field.name}"`);
         }
@@ -152,19 +151,14 @@ document.getElementById("logForm").addEventListener("input", function (e) {
           `input[name="${field.name}"], textarea[name="${field.name}"], select[name="${field.name}"]`
         );
         if (fieldElement) {
-        
           fieldElement.classList.add("missing");
-          
         } else {
           console.warn(`No se encontró el campo con name="${field.name}"`);
         }
       }
     });
-
   });
 });
-
-
 
 document.getElementById("clean").addEventListener("click", function (e) {
   e.preventDefault();
@@ -174,6 +168,28 @@ document.getElementById("clean").addEventListener("click", function (e) {
   Array.from(logForm.elements).forEach(el => {
     if (el.name !== "via") {
       el.value = "";
+    }
+  });
+
+  let fields = [
+    { value: via, name: "via" },
+    { value: number, name: "number" },
+    { value: name, name: "name" },
+    { value: order, name: "order" },
+    { value: inquiry, name: "inquiry" },
+    { value: actionTaken, name: "actionTaken" },
+    { value: cex, name: "cex" },
+    { value: reason, name: "reason" }
+  ];
+
+  fields.forEach(field => {
+    let fieldElement = document.querySelector(
+      `input[name="${field.name}"], textarea[name="${field.name}"], select[name="${field.name}"]`
+    );
+    if (fieldElement) {
+      if (fieldElement.className.includes("missing")) {
+        fieldElement.classList.remove("missing");
+      }
     }
   });
 
@@ -192,13 +208,13 @@ document.getElementById("clean").addEventListener("click", function (e) {
     document.querySelector("select[name='cex']").value = cex;
     document.querySelector("select[name='reason']").value = reason;
     document.querySelector("input[name='other']").value = other;
-    
   });
 
   document.getElementById("copy").addEventListener("click", function () {
     const texto = document.getElementById("output").textContent;
     navigator.clipboard.writeText(texto).catch(err => console.error("Error al copiar: ", err));
-    document.getElementById("output").className = "output"
+
+    document.getElementById("output").className = "output";
     setTimeout(() => document.getElementById("output").className = "", 500);
 
     let fields = [
@@ -220,7 +236,7 @@ document.getElementById("clean").addEventListener("click", function (e) {
         if (fieldElement) {
           if (fieldElement.className.includes("missing")) {
             fieldElement.classList.remove("missing");
-          } 
+          }
         } else {
           console.warn(`No se encontró el campo con name="${field.name}"`);
         }
@@ -233,19 +249,17 @@ document.getElementById("clean").addEventListener("click", function (e) {
           `input[name="${field.name}"], textarea[name="${field.name}"], select[name="${field.name}"]`
         );
         if (fieldElement) {
-        
           fieldElement.classList.add("missing");
-          
         } else {
           console.warn(`No se encontró el campo con name="${field.name}"`);
         }
       }
     });
-
-    
   });
 });
 
 document.getElementById("serch").addEventListener("click", function () {
-  document.getElementById("respuesta").innerText = encEstado(standardizeName(document.getElementById("abrev").value));
+  document.getElementById("respuesta").innerText = encEstado(
+    standardizeName(document.getElementById("abrev").value)
+  );
 });
