@@ -70,6 +70,16 @@ const estadosUSA = [
 ];
 
 let memory;
+let via;
+let number;
+let name;
+let order;
+let inquiry;
+let actionTaken;
+let cex;
+let reason;
+let other;
+
 
 function encEstado(estado) {
   for (array of estadosUSA) {
@@ -91,21 +101,75 @@ document.getElementById("logForm").addEventListener("input", function (e) {
 
   document.getElementById("number").childNodes[0].nodeValue = formData.get("via") + " number";
   document.getElementById("output").textContent = log;
-  document.getElementById("botones").innerHTML = `<button id = copy>copy</button>`;
+  document.getElementById("botones").innerHTML = `<button id="copy">copy</button>`;
+
+  via = formData.get("via");
+  number = formData.get("number");
+  name = formData.get("name");
+  order = formData.get("order");
+  inquiry = formData.get("inquiry");
+  actionTaken = formData.get("actionTaken");
+  cex = formData.get("cex");
+  reason = formData.get("reason");
+  other = formData.get("other");
 
   document.getElementById("copy").addEventListener("click", function () {
     const texto = document.getElementById("output").textContent;
     navigator.clipboard.writeText(texto).catch(err => console.error("Error al copiar: ", err));
-    document.getElementById("output").className = "output"
+
+    document.getElementById("output").className = "output";
     setTimeout(() => document.getElementById("output").className = "", 500);
+
+    let fields = [
+      { value: via, name: "via" },
+      { value: number, name: "number" },
+      { value: name, name: "name" },
+      { value: order, name: "order" },
+      { value: inquiry, name: "inquiry" },
+      { value: actionTaken, name: "actionTaken" },
+      { value: cex, name: "cex" },
+      { value: reason, name: "reason" }
+    ];
+
+    fields.forEach(field => {
+      if (field.value) {
+        let fieldElement = document.querySelector(
+          `input[name="${field.name}"], textarea[name="${field.name}"], select[name="${field.name}"]`
+        );
+        if (fieldElement) {
+          if (fieldElement.className.includes("missing")) {
+            fieldElement.classList.remove("missing");
+          } 
+        } else {
+          console.warn(`No se encontró el campo con name="${field.name}"`);
+        }
+      }
+    });
+
+    fields.forEach(field => {
+      if (!field.value) {
+        let fieldElement = document.querySelector(
+          `input[name="${field.name}"], textarea[name="${field.name}"], select[name="${field.name}"]`
+        );
+        if (fieldElement) {
+        
+          fieldElement.classList.add("missing");
+          
+        } else {
+          console.warn(`No se encontró el campo con name="${field.name}"`);
+        }
+      }
+    });
+
   });
 });
+
+
 
 document.getElementById("clean").addEventListener("click", function (e) {
   e.preventDefault();
 
   const logForm = document.getElementById("logForm");
-  console.log(logForm);
 
   Array.from(logForm.elements).forEach(el => {
     if (el.name !== "via") {
@@ -119,6 +183,16 @@ document.getElementById("clean").addEventListener("click", function (e) {
 
   document.getElementById("last").addEventListener("click", function () {
     document.getElementById("output").textContent = memory;
+    document.querySelector("select[name='via']").value = via;
+    document.querySelector("input[name='number']").value = number;
+    document.querySelector("input[name='name']").value = name;
+    document.querySelector("input[name='order']").value = order;
+    document.querySelector("textarea[name='inquiry']").value = inquiry;
+    document.querySelector("textarea[name='actionTaken']").value = actionTaken;
+    document.querySelector("select[name='cex']").value = cex;
+    document.querySelector("select[name='reason']").value = reason;
+    document.querySelector("input[name='other']").value = other;
+    
   });
 
   document.getElementById("copy").addEventListener("click", function () {
@@ -126,6 +200,49 @@ document.getElementById("clean").addEventListener("click", function (e) {
     navigator.clipboard.writeText(texto).catch(err => console.error("Error al copiar: ", err));
     document.getElementById("output").className = "output"
     setTimeout(() => document.getElementById("output").className = "", 500);
+
+    let fields = [
+      { value: via, name: "via" },
+      { value: number, name: "number" },
+      { value: name, name: "name" },
+      { value: order, name: "order" },
+      { value: inquiry, name: "inquiry" },
+      { value: actionTaken, name: "actionTaken" },
+      { value: cex, name: "cex" },
+      { value: reason, name: "reason" }
+    ];
+
+    fields.forEach(field => {
+      if (field.value) {
+        let fieldElement = document.querySelector(
+          `input[name="${field.name}"], textarea[name="${field.name}"], select[name="${field.name}"]`
+        );
+        if (fieldElement) {
+          if (fieldElement.className.includes("missing")) {
+            fieldElement.classList.remove("missing");
+          } 
+        } else {
+          console.warn(`No se encontró el campo con name="${field.name}"`);
+        }
+      }
+    });
+
+    fields.forEach(field => {
+      if (!field.value) {
+        let fieldElement = document.querySelector(
+          `input[name="${field.name}"], textarea[name="${field.name}"], select[name="${field.name}"]`
+        );
+        if (fieldElement) {
+        
+          fieldElement.classList.add("missing");
+          
+        } else {
+          console.warn(`No se encontró el campo con name="${field.name}"`);
+        }
+      }
+    });
+
+    
   });
 });
 
