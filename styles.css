@@ -45,12 +45,6 @@ select {
   box-sizing: border-box;
 }
 
-input[type="text"]:focus,
-textarea:focus,
-select:focus {
-  border-color: var(--primary);
-  outline: none;
-}
 
 textarea,
 .output {
@@ -128,4 +122,10 @@ button:hover {
 
 .botones > * {
   width: 100%;
+}
+
+input.missing,
+textarea.missing,
+select.missing {
+  border: 2px solid #ff0202;
 }
